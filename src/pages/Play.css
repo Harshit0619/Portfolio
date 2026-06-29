@@ -625,10 +625,27 @@ body:has(.play-page) {
   border-bottom: 1px solid rgba(194, 164, 255, 0.1);
 }
 
+.chat-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .chat-title {
   font-size: 14px;
   font-weight: 600;
   color: var(--accentColor);
+}
+
+.chat-intro {
+  padding: 14px 16px 4px;
+  border-bottom: 1px solid rgba(194, 164, 255, 0.08);
+}
+
+.chat-intro-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
 }
 
 .chat-messages {
@@ -748,7 +765,7 @@ body:has(.play-page) {
 }
 
 .chat-send-btn {
-  width: 40px;
+  min-width: 68px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -760,6 +777,7 @@ body:has(.play-page) {
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s;
+  padding: 0 14px;
 }
 
 .chat-send-btn:hover {

@@ -12,11 +12,11 @@ export const config = {
     },
     about: {
         title: "About Me",
-        description: "I am a Full-Stack Developer from Noida, Uttar Pradesh, currently pursuing B.Tech in Information Technology at Ajay Kumar Garg Engineering College (2022-2026). I build AI-powered products, e-commerce platforms, and modern web apps. My core stack includes JavaScript, TypeScript, Java, React, Next.js, Node.js, Express.js, Prisma, PostgreSQL, MongoDB, Tailwind CSS, and REST APIs."
+        description: "I am a Full-Stack Developer from Noida, Uttar Pradesh. I build AI-powered products, e-commerce platforms, and modern web apps. My core stack includes JavaScript, TypeScript, Java, React, Next.js, Node.js, Express.js, Prisma, PostgreSQL, MongoDB, Tailwind CSS, and REST APIs."
     },
     experiences: [
         {
-            position: "Full-Stack Developer",
+            position: "Full Stack Developer Intern",
             company: "WhatsPilot",
             period: "June 2026 - Present",
             location: "India",
@@ -31,7 +31,7 @@ export const config = {
 
 
         {
-            position: "Full-Stack Developer",
+            position: "Full Stack Developer Intern",
             company: "ScrewBazar",
             period: "Nov 2025 - Jan 2026",
             location: "India",
@@ -87,47 +87,62 @@ export const config = {
     projects: [
         {
             id: 1,
+            link: "https://screwbazar.com/",
+            title: "ScrewBazar",
+            category: "B2B E-commerce Platform",
+            technologies: "React, Node.js, Express.js, MongoDB, Postman",
+            image: "/images/favicon.ico",
+            description: "Built and deployed a full-stack B2B e-commerce platform for industrial fasteners."
+        },
+        {
+            id: 2,
             title: "PromotionBazar",
             category: "Business Growth / Digital Marketing",
             technologies: "Next.js, TypeScript, Prisma, Neon",
             image: "/images/PromotionBazar.jpg",
+            link: "https://promotion-bazar.vercel.app/",
             description: "Business growth and digital marketing platform that helps brands generate qualified leads, optimize campaigns, and scale through performance-driven marketing solutions."
         },
         {
-            id: 2,
+            id: 3,
             title: "DK-Associate",
             category: "Client Work Completed",
             technologies: "Next.js, TypeScript, API Integration",
-            image: "/images/placeholder.webp",
+            image: "/images/image.png",
+            link: "https://dkexplo.com/",
             description: "Client work completed for DK-Associate with responsive UI and production-ready frontend delivery."
         },
         {
-            id: 3,
+            id: 4,
             title: "Quick.ai",
             category: "AI Platform",
             technologies: "React, Node.js, PostgreSQL, Express.js, Clerk, AI APIs",
             image: "/images/quick.jpg",
+            link: "https://quick-ai-woad.vercel.app/",
             description: "AI-powered productivity platform with content, image, and resume automation features."
         },
         {
-            id: 4,
+            id: 5,
             title: "GreenCart",
             category: "E-commerce",
             technologies: "MongoDB, Express.js, React.js, Node.js, Cloudinary, Postman",
             image: "/images/GreenCart.jpg",
+            link: "https://github.com/Harshit0619/GreenCart",
             description: "Scalable e-commerce platform with reusable architecture, secure cart, checkout, and authentication flows."
         },
         {
-            id: 5,
+            id: 6,
             title: "SensAi",
             category: "AI Resume Tool",
             technologies: "Next.js, Gemini AI, Prisma, PostgreSQL, TypeScript",
-            image: "/images/placeholder.webp",
+            image: "/images/logo.png",
+            link: "https://github.com/Harshit0619/sensai",
             description: "AI resume feedback platform that delivers personalized suggestions and fast response times."
         }
     ],
     contact: {
         email: "harshitobra19@gmail.com",
+        phone: "+91 9628604177",
         github: "https://github.com/Harshit0619",
         linkedin: "https://www.linkedin.com/in/harshit-pal-13b3b0276/"
     },
