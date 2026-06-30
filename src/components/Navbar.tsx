@@ -10,6 +10,12 @@ export let lenis: Lenis | null = null;
 
 const Navbar = () => {
   useEffect(() => {
+    if (window.innerWidth <= 1024) {
+      lenis?.destroy();
+      lenis = null;
+      return;
+    }
+
     // Initialize Lenis smooth scroll
     lenis = new Lenis({
       duration: 1.7,
@@ -26,21 +32,28 @@ const Navbar = () => {
     lenis.stop();
 
     // Handle smooth scroll animation frame
+    let rafId = 0;
+
     function raf(time: number) {
       lenis?.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     // Handle navigation links
-    let links = document.querySelectorAll(".header ul a");
+    const links = Array.from(document.querySelectorAll(".header ul a"));
+    const clickHandlers: Array<{
+      element: HTMLAnchorElement;
+      handler: (e: Event) => void;
+    }> = [];
+
     links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
+      const element = elem as HTMLAnchorElement;
+      const handler = (e: Event) => {
         if (window.innerWidth > 1024) {
           e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
+          const current = e.currentTarget as HTMLAnchorElement;
+          const section = current.getAttribute("data-href");
           if (section && lenis) {
             const target = document.querySelector(section) as HTMLElement;
             if (target) {
@@ -51,16 +64,27 @@ const Navbar = () => {
             }
           }
         }
-      });
+      };
+
+      element.addEventListener("click", handler);
+      clickHandlers.push({ element, handler });
     });
 
     // Handle resize
-    window.addEventListener("resize", () => {
+    const onResize = () => {
       lenis?.resize();
-    });
+    };
+
+    window.addEventListener("resize", onResize);
 
     return () => {
+      cancelAnimationFrame(rafId);
+      clickHandlers.forEach(({ element, handler }) => {
+        element.removeEventListener("click", handler);
+      });
+      window.removeEventListener("resize", onResize);
       lenis?.destroy();
+      lenis = null;
     };
   }, []);
   return (

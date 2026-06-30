@@ -1,9 +1,4 @@
-import {
-  FaGithub,
-
-  FaLinkedinIn,
-
-} from "react-icons/fa6";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import "./styles/SocialIcons.css";
 import { TbNotes } from "react-icons/tb";
 import { useEffect } from "react";
@@ -12,11 +7,15 @@ import { config } from "../config";
 
 const SocialIcons = () => {
   useEffect(() => {
-    const social = document.getElementById("social") as HTMLElement;
+    const social = document.getElementById("social");
+    if (!social) return;
+
+    const cleanups: Array<() => void> = [];
 
     social.querySelectorAll("span").forEach((item) => {
       const elem = item as HTMLElement;
       const link = elem.querySelector("a") as HTMLElement;
+      if (!link) return;
 
       const rect = elem.getBoundingClientRect();
       let mouseX = rect.width / 2;
@@ -51,10 +50,14 @@ const SocialIcons = () => {
 
       updatePosition();
 
-      return () => {
-        elem.removeEventListener("mousemove", onMouseMove);
-      };
+      cleanups.push(() => {
+        document.removeEventListener("mousemove", onMouseMove);
+      });
     });
+
+    return () => {
+      cleanups.forEach((cleanup) => cleanup());
+    };
   }, []);
 
   return (
@@ -72,7 +75,12 @@ const SocialIcons = () => {
         </span>
        
       </div>
-      <a className="resume-button" href="/Harshit_Resume.pdf" target="_blank" rel="noopener noreferrer">
+      <a
+        className="resume-button"
+        href="/Harshit_Resume.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <HoverLinks text="RESUME" />
         <span>
           <TbNotes />

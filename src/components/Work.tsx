@@ -10,8 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Work = () => {
   useEffect(() => {
-    // Disable pinning on mobile to allow scrolling
-    if (window.innerWidth <= 768) return;
+    // Disable the horizontal pinning on compact screens so the section can stack naturally.
+    if (window.innerWidth <= 1024) return;
 
     let translateX: number = 0;
 

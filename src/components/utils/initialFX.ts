@@ -4,7 +4,7 @@ import { lenis } from "../Navbar";
 
 export function initialFX() {
   document.body.style.overflowY = "auto";
-  if (lenis) {
+  if (lenis && window.innerWidth > 1024) {
     lenis.start();
   }
   document.getElementsByTagName("main")[0].classList.add("main-active");
